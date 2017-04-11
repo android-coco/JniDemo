@@ -18,6 +18,7 @@ public class JniUtil
     //C++方法二
     public  native int getJniAdd(int a, int b);
 }
+
 2，bulid.gradle中设置
 sourceSets { main { jni.srcDirs = ['src/main/jni', 'src/main/jni/'] } }
     externalNativeBuild {
@@ -25,11 +26,15 @@ sourceSets { main { jni.srcDirs = ['src/main/jni', 'src/main/jni/'] } }
             path file("src\\main\\jni\\Android.mk")
         }
     }
-2，javah javah -encoding utf8 net.fitcome.jnidemo.JniUtil
+    
+4，javah javah -encoding utf8 net.fitcome.jnidemo.JniUtil
 会生成一个net_fitcome_jnidemo_JniUtil.h的头文件
-3，创建jni文件夹 新建Android.mk 拷贝net_fitcome_jnidemo_JniUtil.h的头文件到目录下面
+
+5，创建jni文件夹 新建Android.mk 拷贝net_fitcome_jnidemo_JniUtil.h的头文件到目录下面
 新建文件JniUtil.c或JniUtil.cpp
 实现头文件方法
-4，ndk-build JniUtil.c或JniUtil.cpp
+
+6，ndk-build JniUtil.c或JniUtil.cpp
 会生成相应的so包
-5，MainActivity调用相应方法
+
+7，MainActivity调用相应方法
